@@ -1,0 +1,16 @@
+﻿@model _23DH112330_MyStore.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="bg-success">Chi tiết sản phẩm</h2>
+
+<div>
+    @Html.Partial("PartialView_ProductInfo", Model)
+    <div style="padding:10px;">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+</div>
