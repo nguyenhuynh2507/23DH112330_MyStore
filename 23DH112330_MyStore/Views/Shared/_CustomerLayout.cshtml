@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="~/Content/script/All-css.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="app">
+        <div class="header-ads" style=" background-color: #EFFFF4; height:40px;padding-top:20px;">
+            <a href="" style="text-decoration: none;">
+                <div style="color: #00AB56; display: flex; justify-content: center; font-size: 12px; font-weight: 600; line-height: 150%; padding-left: 4px; gap:4px;">
+                    Freeship đơn từ 45k, giảm nhiều hơn cùng
+                    <img style="width:79px; height:16px;" src="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png" />
+                </div>
+            </a>
+        </div>
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href=""><img src="https://salt.tikicdn.com/ts/upload/0e/07/78/ee828743c9afa9792cf20d75995e134e.png" width="96" height="40"></a>
+                            <br />
+                            <a href="" class="header__navbar-link header__navbar-link--totnhanh">Tốt &amp; nhanh</a>
+                        </li>
+                    </ul>
+                    <div class="header__search">
+                        <i class="search-icon fas fa-search"></i>
+                        <input type="text" class="header__search-input" placeholder="30 ngày đổi trả" />
+                        <div class="search-submit">
+                            <button class="search-submit--btn">Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href="" class="header__navbar-link"><i class="header__navbar-icon fas fa-home"></i>Trang chủ</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile"></i>Tài khoản</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="" class="header__navbar-link  header__navbar-link--shop"><i class="header__navbar-icon fas fa-shopping-cart"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="quicksearch-address">
+                    <div class="searchoption">
+                        <a href="" class="header__navbar-link header__navbar-linkqs">điện gia dụng</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">xe cộ</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">mẹ &amp; bé</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">khỏe đẹp</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">nhà cửa</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">sách</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">thể thao</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">điện thoại</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">ipad gen 10</a>
+                        <a href="" class="header__navbar-link header__navbar-linkqs">samsung</a>
+                    </div>
+                    <div class="shipping-address ">
+                        <a href="" class="header__navbar-link header__navbar-link--addr"><i class="header__navbar-icon fas fa-map-marker-alt"></i>Giao đến:</a>
+                        <a href="~/ShipipingAddress/ShippingAddress" class="address-display">
+                            Q. 1, P. Bến Nghé, Hồ Chí Minh
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <a href="" class="header-policy" style="text-decoration:none;">
+                        <div class="header__navbar-link header__navbar-link--totnhanh" style="padding-top:1px;">
+                            Cam kết
+                        </div>
+                        <div>
+                            <div class="address-display address-display--policy" style="border-left:none;">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/96/76/a3/16324a16c76ee4f507d5777608dab831.png" />
+                                <span style="padding-top:4px;">100% hàng thật</span>
+                            </div>
+                            <div class="address-display address-display--policy">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/0b/f2/19/c03ae8f46956eca66845fb9aaadeca1e.png" />
+                                <span style="padding-top:4px;">Hoàn 200% nếu hàng giả</span>
+                            </div>
+                            <div class="address-display address-display--policy">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/3a/f4/7d/86ca29927e9b360dcec43dccb85d2061.png" />
+                                <span style="padding-top:4px;">30 ngày đổi trả</span>
+                            </div>
+                            <div class="address-display address-display--policy">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/87/98/77/fc33e3d472fc4ce4bae8c835784b707a.png" />
+                                <span style="padding-top:4px;">Giao nhanh 2h</span>
+                            </div>
+                            <div class="address-display address-display--policy">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/6a/81/06/0675ef5512c275a594d5ec1d58c37861.png" />
+                                <span style="padding-top:4px;">Giá siêu rẻ</span>
+                            </div>
+                            <div class="address-display address-display--policy">
+                                <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/11/09/ec/456a2a8c308c2de089a34bbfef1c757b.png" />
+                                <span style="padding-top:4px;">Free ship mọi nơi</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="grid__row">
+                <div class="grid_column-2">
+                    <nav class="category">
+                        <h3 class="category__heading">Khám phá theo danh mục</h3>
+                        <ul class="category-list">
+                            <li class="category-item">
+                                <a href="" class="category-item__link">Điện thoại smartphone</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="" class="category-item__link">Máy tính bảng</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="" class="category-item__link">Máy đọc sách</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="" class="category-item__link">Điện thoại phổ thông</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="" class="category-item__link">Điện thoại bàn</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a href="" style="text-decoration:none;">
+                        <div style="text-align:center;" class="home__product-item side__product">
+                            <div class="home__product-item__img" style=" border-radius: 0; background-image: url(https://salt.tikicdn.com/cache/750x750/ts/product/be/d9/31/f9a8136c56b3a63ae3ecd46a14d3edae.jpg); "></div>
+                            <div class="tiki-trading">
+                                <img class="tiki-trading-img" src="https://vcdn.tikicdn.com/ts/seller/d1/3f/ae/13ce3d83ab6b6c5e77e6377ad61dc4a5.jpg" />
+                                <span style="color:black;">Tiki Trading</span>
+                            </div>
+                            <div class="side__product-name"><b>Apple iPhone 16 Pro Max - Titan Tự Nhiên - 512GB</b></div>
+                            <div class="home__category-item__rating side__product-rating" style="margin-top:8px;">
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <span style="border-left:1px solid; padding-left:5px; border-color:lightgray">
+                                    Đã bán 95
+                                </span>
+                            </div>
+                            <div class="home__category-item__price side__product-price">40.990.000<sup>₫</sup></div>
+                            <div class="xemthem">Xem thêm</div>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration:none;">
+                        <div style="text-align:center;" class="home__product-item side__product">
+                            <div class="home__product-item__img" style=" border-radius: 0; background-image: url(https://salt.tikicdn.com/cache/750x750/ts/product/f7/ea/dd/53765af30c1da20b27dc20629bb31c1d.jpg); "></div>
+                            <div class="tiki-trading">
+                                <img class="tiki-trading-img" src="https://vcdn.tikicdn.com/ts/seller/d1/3f/ae/13ce3d83ab6b6c5e77e6377ad61dc4a5.jpg" />
+                                <span style="color:black;">Tiki Trading</span>
+                            </div>
+                            <div class="side__product-name"><b>Apple iPhone 16 Pro - Titan Tự Nhiên - 128GB</b></div>
+                            <div class="home__category-item__rating side__product-rating" style="margin-top:8px;">
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <i class="fas fa-star" style="color: rgb(255, 196, 0);transform: scale(0.8);"></i>
+                                <span style="border-left:1px solid; padding-left:5px; border-color:lightgray">
+                                    Đã bán 48
+                                </span>
+                            </div>
+                            <div class="home__category-item__price side__product-price">28.990.000<sup>₫</sup></div>
+                            <div class="xemthem">Xem thêm</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="grid_column-10">
+                    <div class="home__heading">
+                        <h2>Điện Thoại - Máy Tính Bảng</h2>
+                    </div>
+                    <div class="slider">
+                        <div class="slider-area">
+                            <img src="~/Content/sliderimgsrc/95916a0bd08a84d64206ce6ef9e72010.png" />
+                            <img src="~/Content/sliderimgsrc/9c0a7990ddba5207da7cc37b85bdc2f0.png" />
+                            <img src="~/Content/sliderimgsrc/e95b916999b2dd40b3a8e2af30e704e8.png" />
+                            <img src="~/Content/sliderimgsrc/fb7c0e1414d55ae6ea43af2883f2d842.png" />
+                        </div>
+                    </div>
+                    <div class="home__category">
+                        <h3><b>Khám phá theo danh mục</b></h3>
+                        <div class="home__category-row">
+                            <a href="" class="home__category-item">
+                                <div>
+                                    <img class="home__category-icon" src="~/Content/sliderimgsrc/categoryicon/smartphone.png" />
+                                </div>
+                                <div>Điện thoại Smartphone</div>
+                            </a>
+                            <a href="" class="home__category-item">
+                                <div>
+                                    <img class="home__category-icon" src="~/Content/sliderimgsrc/categoryicon/tablet.png" />
+                                </div>
+
+                                <div>Máy tính bảng</div>
+                            </a>
+                            <a href="" class="home__category-item">
+                                <div>
+                                    <img class="home__category-icon" src="~/Content/sliderimgsrc/categoryicon/textreader.png" />
+                                </div>
+                                <div>
+                                    Máy đọc sách
+                                </div>
+
+                            </a>
+                            <a href="" class="home__category-item">
+                                <div><img class="home__category-icon" src="~/Content/sliderimgsrc/categoryicon/cellphone.png" /></div>
+                                <div>Điện thoại phổ thông</div>
+                            </a>
+                            <a href="" class="home__category-item">
+                                <div><img class="home__category-icon" src="~/Content/sliderimgsrc/categoryicon/oldahhphone.png" /></div>
+                                <div>Điện thoại bàn</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="filter__category">
+                        <h3>Tất cả sản phẩm</h3>
+                        <div class="home__category-row">
+                            <div class="filter__category-list">
+                                <div>ROM</div>
+                                <div>
+                                    <button class="filter__category-option">128GB</button>
+                                    <button class="filter__category-option">256GB</button>
+                                    <button class="filter__category-option">64GB</button>
+                                    <button class="filter__category-option">32GB</button>
+                                    <button class="filter__category-option">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div class="filter__category-list">
+                                <div>Thương hiệu</div>
+                                <div>
+                                    <button class="filter__category-option">Samsung</button>
+                                    <button class="filter__category-option">Xiaomi</button>
+                                    <button class="filter__category-option">Oppo</button>
+                                    <button class="filter__category-option">Panasonic</button>
+                                    <button class="filter__category-option">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div class="filter__category-list">
+                                <div>Camera sau</div>
+                                <div>
+                                    <button class="filter__category-option">16MP</button>
+                                    <button class="filter__category-option">13MP</button>
+                                    <button class="filter__category-option">11MP</button>
+                                    <button class="filter__category-option">8MP</button>
+                                    <button class="filter__category-option">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div>
+                                <button class="filter__category-all">
+                                    <i class="fas fa-filter"></i>
+                                    <div>Tất cả</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox">
+                            <div>
+                                <input class="filter__checkbox-box" type="checkbox" />
+                            </div>
+                            <img style="height: 17px; margin-top: 5px; padding:0 5px;" src="~/Content/sliderimgsrc/categoryicon/now.png" />
+                            <div style="margin-top: 5px; padding: 0 5px;">
+                                <span>
+                                    Giao siêu tốc 2h
+                                </span>
+                            </div>
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div>
+                                <input class="filter__checkbox-box" type="checkbox" />
+                            </div>
+                            <img style="height: 15px; margin-top: 5px; padding:0 5px;" src="~/Content/sliderimgsrc/categoryicon/topdeal.png" />
+                            <div style="margin-top: 5px; padding: 0 5px;">
+                                <span>
+                                    Siêu rẻ
+                                </span>
+                            </div>
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div>
+                                <input class="filter__checkbox-box" type="checkbox" />
+                            </div>
+                            <img style="height: 16px; margin-top: 5px; padding:0 5px;" src="~/Content/sliderimgsrc/categoryicon/freeship.png" />
+                            <div class="divider-line" style="margin-left: 16px; margin-right: 16px; align-self: flex-end;"></div>
+                            <div>
+                                <input class="filter__checkbox-box" type="checkbox" />
+                            </div>
+                            <div style="margin-top: 5px; padding: 0 5px;">
+                                <span>
+                                    <span>
+                                        <i class="fas fa-star" style="color: rgb(255, 196, 0); transform: scale(0.6);height:10px;width:10px;"></i>
+                                        <i class="fas fa-star" style="color: rgb(255, 196, 0); transform: scale(0.6);height:10px;width:10px; "></i>
+                                        <i class="fas fa-star" style="color: rgb(255, 196, 0); transform: scale(0.6);height:10px;width:10px; "></i>
+                                        <i class="fas fa-star" style="color: rgb(255, 196, 0); transform: scale(0.6);height:10px;width:10px; "></i>
+                                        <i class="far fa-star" style=" transform: scale(0.6);height:10px;width:10px;"></i>
+                                    </span>
+                                    Từ 4 sao trở lên
+                                </span>
+                            </div>
+                            <span style="margin-left:150px; margin-top:5px;">Sắp xếp</span>
+                            <button class="filter__category-option" style="margin-top: -4px;margin-left:10px;">
+                                Phổ biến
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="home__product">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+        </footer>
+    </div>
+</body>
+</html>

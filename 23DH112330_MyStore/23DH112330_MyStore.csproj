@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,7 +137,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +178,8 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>MyStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\HomeProductVM.cs" />
+    <Compile Include="Models\ViewModel\ProductSearchVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +199,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\script\All-css.css" />
+    <Content Include="Content\sliderimgsrc\95916a0bd08a84d64206ce6ef9e72010.png" />
+    <Content Include="Content\sliderimgsrc\9c0a7990ddba5207da7cc37b85bdc2f0.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\cellphone.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\freeship.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\now.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\oldahhphone.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\smartphone.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\tablet.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\textreader.png" />
+    <Content Include="Content\sliderimgsrc\categoryicon\topdeal.png" />
+    <Content Include="Content\sliderimgsrc\e95b916999b2dd40b3a8e2af30e704e8.png" />
+    <Content Include="Content\sliderimgsrc\fb7c0e1414d55ae6ea43af2883f2d842.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -234,6 +255,7 @@
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\PartialView_CreateEditProducts.cshtml" />
     <Content Include="Areas\Admin\Views\Products\PartialView_ProductInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\PartialView_ListProduct.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -256,9 +278,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_CustomerLayout.cshtml" />
+    <Content Include="Views\Home\PartialViewFeatureProduct.cshtml" />
+    <Content Include="Views\Home\PartialViewNewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
