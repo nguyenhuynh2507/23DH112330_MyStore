@@ -152,7 +152,6 @@
 }
 
 .grid__row {
-    padding: 0 30px;
     display: flex;
     margin-left: -12px;
     margin-right: -12px;

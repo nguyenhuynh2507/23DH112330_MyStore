@@ -137,8 +137,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +167,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyStoreModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyStoreModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyStoreModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>MyStoreModel.tt</DependentUpon>
     </Compile>
@@ -178,8 +187,15 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>MyStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\Cart.cs" />
+    <Compile Include="Models\ViewModel\CartItem.cs" />
+    <Compile Include="Models\ViewModel\CartService.cs" />
+    <Compile Include="Models\ViewModel\CheckoutVM.cs" />
     <Compile Include="Models\ViewModel\HomeProductVM.cs" />
+    <Compile Include="Models\ViewModel\LoginVM.cs" />
+    <Compile Include="Models\ViewModel\ProductDetailVM.cs" />
     <Compile Include="Models\ViewModel\ProductSearchVM.cs" />
+    <Compile Include="Models\ViewModel\RegisterVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,13 +250,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\MyStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyStoreModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyStoreModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\MyStoreModel.edmx.diagram">
       <DependentUpon>MyStoreModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
@@ -282,6 +298,14 @@
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <Content Include="Views\Home\PartialViewFeatureProduct.cshtml" />
     <Content Include="Views\Home\PartialViewNewProduct.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\PartialViewRelatedProduct.cshtml" />
+    <Content Include="Views\Home\PartialViewTopProduct.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\VerifyState.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

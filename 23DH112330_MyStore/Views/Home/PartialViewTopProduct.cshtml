@@ -1,0 +1,33 @@
+﻿@model _23DH112330_MyStore.Models.ViewModel.ProductDetailVM
+@{
+    ViewBag.Title = "Customer Home Page";
+    <link rel="stylesheet" type="text/css" href="~/Content/script/All-css.css" />
+}
+@if (Model.TopProducts != null && Model.TopProducts.Any())
+{
+    <div class="grid__row">
+        @foreach (var product in Model.TopProducts)
+        {
+
+            <div class="grid_column-2_5">
+                <div class="home__product-item">
+                    <div>
+                        <a href="@Url.Action("ProductDetail", "Home", new {id = product.ProductID})">
+                            <div class="home__product-item__img" style="background-image: url(@Html.DisplayFor(modelItem => product.ProductImage));"></div>
+                        </a>
+                    </div>
+                    <div class="home__category-item__price">@Html.DisplayFor(modelItem => product.ProductPrice)<sup>₫</sup></div>
+                    <h3 class="home__category-item__rating" style="text-transform:uppercase;">@Html.DisplayFor(modelItem => product.Category.CategoryName)</h3>
+                    <h3 class="home__category-item__name">@Html.DisplayFor(modelItem => product.ProductName)</h3>
+                    <div class="home__category-item__rating has-border" style="margin-top:8px;">
+                        <i class="fas fa-star" style="color: rgb(255, 196, 0);"></i>
+                        <i class="fas fa-star" style="color: rgb(255, 196, 0);"></i>
+                        <i class="fas fa-star" style="color: rgb(255, 196, 0);"></i>
+                        <i class="fas fa-star" style="color: rgb(255, 196, 0);"></i>
+                        <i class="fas fa-star" style="color: rgb(255, 196, 0);"></i>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

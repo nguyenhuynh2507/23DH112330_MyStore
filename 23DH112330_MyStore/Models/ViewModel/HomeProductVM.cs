@@ -8,6 +8,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
 {
     public class HomeProductVM
     {
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
 
         public int PageNumber { get; set; }

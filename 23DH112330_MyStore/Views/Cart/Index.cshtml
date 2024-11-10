@@ -1,12 +1,81 @@
-﻿@model _23DH112330_MyStore.Models.ViewModel.HomeProductVM
+﻿@model _23DH112330_MyStore.Models.ViewModel.Cart
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
-    ViewBag.Title = "Customer Home Page";
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/script/All-css.css" />
 }
+
+<style>
+    .grid_column-3 {
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 28%;
+    }
+
+    .grid_column-5 {
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 41.6666%;
+    }
+
+    .grid_column-4 {
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 30.3333%;
+    }
+
+    .grid_column-7 {
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 70%;
+    }
+
+    .product-preview {
+        background-color: white;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 10px 0;
+    }
+
+    .product-preview__img {
+        padding-top: 100%;
+        background-size: contain;
+        border-radius: 8px;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    .category__heading-detail {
+        margin-top: -15px;
+        margin-left: -15px;
+    }
+</style>
+<script language="JavaScript">
+    function cartUpdateQuantity(id, newQuantity) {
+        if (newQuantity < 1) return;
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = '@Url.Action("UpdateQuantity", "Cart");
+
+        const idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id';
+        idInput.value = id;
+        form.appendChild(idInput);
+
+        const quantityInput = document.createElement('input');
+        quantityInput.type = 'hidden';
+        quantityInput.name = 'quantity';
+        quantityInput.value = newQuantity;
+        form.appendChild(quantityInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="~/Content/script/All-css.css" rel="stylesheet" />
     <title>
@@ -52,7 +121,7 @@
                         <a href="" class="header__navbar-link"><i class="header__navbar-icon fas fa-home"></i>Trang chủ</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="@Url.Action("Login", "Account")" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile">Tài khoản</i></a>
+                        <a href="" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile"></i>Tài khoản</a>
                     </li>
                     <li class="header__navbar-item">
                         <a href="" class="header__navbar-link  header__navbar-link--shop"><i class="header__navbar-icon fas fa-shopping-cart"></i></a>
@@ -115,13 +184,72 @@
         </div>
     </header>
 
-    <hr />
-
     <div class="grid">
-        @Html.Partial("PartialViewFeatureProduct", Model)
+        <div class="grid__row">
+            <div class="grid_column-7">
+                @if (!Model.Items.Any())
+                {<p>Bạn chưa có sản phẩm nào trong giỏ</p> }
+                else
+                {
+                    <div class="product-preview">
+                        <div class="grid__row" style="padding:0 0">
+                            <input style="margin-left:5px;" type="checkbox" />
+                            <span class="grid_column-5">Tất cả</span>
+                            <span class="grid_column-3">Đơn giá</span>
+                            <span class="grid_column-2">Số lượng</span>
+                            <span class="grid_column-2">Thành tiền</span>
+                            <a href="@Url.Action("ClearCart", "Cart", null)"><img style="margin-right:10px;" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/trash.svg" class="remove-all" alt="deleted"></a>
+                        </div>
+                    </div>
+                    <div class="product-preview">
+                        @foreach (var item in Model.Items)
+                        {
+                            <div class="grid__row" style="padding:0 0">
+                                <input style="margin-left: 5px;" type="checkbox" />
+                                <div class="grid_column-5" style="display:flex">
+                                    <img width="80" src="@item.ProductImage" />
+                                    <div>
+                                        @item.ProductName
+                                    </div>
+                                </div>
+                                <span class="grid_column-3">@item.UnitPrice.ToString("N0")<sup>₫</sup></span>
+                                <div class="grid_column-2">
+                                    @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="id" value="@item.ProductID" />
+                                        <button type="button" style="width:20px;" onclick="cartUpdateQuantity(@item.ProductID, @item.Quantity - 1)">-</button>
+                                        <input type="number" name="quantity" value="@item.Quantity" min="1" max="100" style="width:40px; text-align:right" readonly />
+                                        <button type="button" style="width:20px;" onclick="cartUpdateQuantity(@item.ProductID, @item.Quantity + 1)">+</button>
+                                    }
+                                </div>
+                                <span class="grid_column-2">@item.TotalPrice.ToString("N0")<sup>₫</sup></span>
+                                <a href="@Url.Action("RemoveFromCart", "Cart", null)"><img style="margin-right:10px;" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/trash.svg" class="remove-all" alt="deleted"></a>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
 
-
-        @Html.Partial("PartialViewNewProduct", Model)
+            <div class="grid_column-3">
+                <div class="product-preview">
+                    <div>
+                        <span style="border-left:1px solid; padding-left:5px; border-color:lightgray">Tổng tiền hàng: &nbsp;</span>
+                        <span style="color:red">@Model.TotalValue().ToString("N0")<sup>₫</sup></span>
+                    </div>
+                    <hr />
+                    <h3 class="category__heading category__heading-detail">Tổng tiền thanh toán</h3>
+                    <div>
+                        <span style="color:red">@Model.TotalValue().ToString("N0")<sup>₫</sup></span>
+                    </div>
+                    <div>
+                        @Html.ActionLink("Mua hàng", "Checkout", "Order", new {}, new
+                   {
+                       @class = "btn btn-danger cart-btn"
+                   })
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 </body>
 </html>
