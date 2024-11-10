@@ -72,9 +72,9 @@
             <nav class="header__navbar">
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <a href=""><img src="https://salt.tikicdn.com/ts/upload/0e/07/78/ee828743c9afa9792cf20d75995e134e.png" width="96" height="40"></a>
+                        <a href="@Url.Action("Index", "Home")"><img src="https://salt.tikicdn.com/ts/upload/0e/07/78/ee828743c9afa9792cf20d75995e134e.png" width="96" height="40"></a>
                         <br />
-                        <a href="" class="header__navbar-link header__navbar-link--totnhanh">Tốt &amp; nhanh</a>
+                        <a href="@Url.Action("Index", "Home")" class="header__navbar-link header__navbar-link--totnhanh">Tốt &amp; nhanh</a>
                     </li>
                 </ul>
                 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
@@ -93,13 +93,13 @@
                 }
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-link"><i class="header__navbar-icon fas fa-home"></i>Trang chủ</a>
+                        <a href="@Url.Action("Register", "Account")" class="header__navbar-link"><i class="header__navbar-icon fas fa-home"></i>Đăng Kí</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile"></i>@Html.DisplayFor(model => model.Username)</a>
+                        <a href="@Url.Action("Login", "Account")" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile">Đăng Nhập</i></a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-link  header__navbar-link--shop"><i class="header__navbar-icon fas fa-shopping-cart"></i></a>
+                        <a href="@Url.Action("Index", "Cart")" class="header__navbar-link  header__navbar-link--shop"><i class="header__navbar-icon fas fa-shopping-cart"></i></a>
                     </li>
                 </ul>
             </nav>
