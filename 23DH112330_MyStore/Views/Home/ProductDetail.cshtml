@@ -217,10 +217,7 @@
                    })
                         </p>
                         <h3 class="category__heading category__heading-detail">Tạm tính</h3>
-                        <p>@Model.estimate.ToString("N0")</p>
-                        <div style="margin-bottom:5px;">
-                            <button type="button" class="btn btn-danger" style="width:100%">Mua ngay</button>
-                        </div>
+                        <p>@Model.estimate.ToString("N0")<sup>đ</sup></p>
                         <div>
                             @Html.ActionLink("Thêm vào giỏ", "AddToCart", "Cart", new
                        {

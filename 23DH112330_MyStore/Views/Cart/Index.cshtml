@@ -242,9 +242,15 @@
                         <span style="color:red">@Model.TotalValue().ToString("N0")<sup>₫</sup></span>
                     </div>
                     <div>
-                        @Html.ActionLink("Mua hàng", "Checkout", "Order", new {}, new
+                        @Html.ActionLink("Thanh toán", "Checkout", "Order",null, new
                    {
                        @class = "btn btn-danger cart-btn"
+                   })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home",null ,new
+                   {
+                       @class = "btn btn-primary cart-btn"
                    })
                     </div>
                 </div>

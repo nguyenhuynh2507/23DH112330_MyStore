@@ -1,20 +1,389 @@
-﻿
+﻿<style>
+    body {
+        margin: 0
+    }
+    html {
+        font-size: 62.5%;
+        line-height: 1.6rem;
+        font-family: 'Roboto', 'sans-serif';
+        box-sizing: border-box;
+    }
+
+    h4 {
+        line-height: 1.3;
+    }
+    .header {
+        background-color: #1A4127;
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        width: 1500px;
+        height: 55px;
+        height: 60px;
+        align-items: center;
+    }
+
+    .header__navbar {
+    }
+    /*phần list danh mục*/
+    .header__navbar-list {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    .header__navbar-item {
+        display: inline-block;
+        padding: 10px;
+        margin: 10px;
+        font-size: 1.9rem;
+    }
+
+    .header__navbar-item-link {
+        text-decoration: none;
+        color: white;
+    }
+
+        .header__navbar-item:hover,
+        .header__navbar-item-link:hover {
+            color: #ffa200;
+        }
+    /*phần logo*/
+    .header-logo-img {
+        display: flex;
+    }
+    /*phần tìm kiếm*/
+    .header__search {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .header .header__search input {
+        border-radius: 10px;
+        border: 1px solid 1px;
+        width: 220px;
+        font-size: 14px;
+    }
+    /*phần icon tìm kiếm*/
+    .header__search i {
+        position: absolute;
+        margin-top: 8px;
+        margin-left: 180px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    /*phần giỏ hàng*/
+    .header__cart {
+        background-color: #ffa200;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        width: 150px;
+        color: var(--white-color);
+        font-size: 2rem;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+        .header__cart i {
+            position: absolute;
+            color: var(--white-color);
+            font-size: 20px;
+            margin-left: -115px;
+            margin-top: -2px;
+        }
+
+    .top1 {
+        height: 40px;
+        background-color: white;
+        padding: 5px;
+        display: flex;
+        margin-left: -55px;
+        font-size: 14px;
+    }
+
+    .body1 {
+        display: flex;
+        height: 850px;
+    }
+
+    .leftsb {
+        background: #fff;
+        border-radius: 8px;
+        margin-left: 180px;
+        margin-top: 20px;
+        width: 55%;
+        font-family: Arial;
+        padding: 15px;
+        line-height: 1.5;
+        margin-right: 10px;
+        height: 800px;
+    }
+
+    .rightsb {
+        background: #fff;
+        border-radius: 8px;
+        width: 350px;
+        margin-top: 20px;
+        height: 800px;
+        margin-right: 180px;
+        padding: 15px;
+    }
+
+    .item {
+        flex: 0 0 2.4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background: #1A4127;
+        color: #fff;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 2.4rem;
+        margin-right: 1rem;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .duonggachngang {
+        display: flex;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #f2f2f2;
+        line-height: 1.4;
+    }
+
+    .no-underline {
+        /*làm cho liên kết không có gạch chân*/
+        text-decoration: none;
+    }
+
+    .footer {
+        display: flex;
+        width: 100%;
+        background-color: white;
+        margin-top: 30px;
+        height: 400px;
+    }
+
+    .logo {
+        max-width: 100%;
+        margin-top: 50px;
+    }
+
+    .lienhe {
+        width: 380px;
+        height: 178px;
+        background-color: white;
+        margin-top: 20px;
+    }
+
+    .thongtin {
+        color: #333333;
+    }
+
+    .thongtin2 {
+        width: 200px;
+        height: 294px;
+        background-color: white;
+        margin-top: 50px;
+    }
+
+    .thongtin3 {
+        width: 180px;
+        height: 294px;
+        background-color: white;
+        margin-top: 50px;
+        margin-left: 80px;
+    }
+
+    .hopthongtin {
+        background: #EEF3EA;
+        border-radius: 16px;
+        padding: 30px;
+        width: 320px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        margin-left: 140px;
+    }
+
+    .title {
+        color: #233F28;
+        font-size: 15px;
+    }
+
+    .nutbam {
+        border-radius: 8px;
+        color: white;
+        height: 50px;
+        width: 150px;
+        background-color: #526E3E;
+        padding: 0px 15px;
+    }
+
+    .grid {
+        width: 1280px;
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+    }
+</style>
 
 <!DOCTYPE html>
-<html>
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min .css" />
-    <link href="~/Content/script/All-css.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
-<body>
+@*//top*@
+@* top 1  *@
+
+<body style="background-color: #F1F0EC; height: 1000px; ">
+    @* top *@
     <div class="app">
-        <div class="" style="background-color: #F5F5FA">
-            @RenderBody()
-        </div>
-        <footer class="footer">
-        </footer>
+
+        <header class="header">
+            <div class="grid">
+
+                <div class="header-logo-img"><img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png" style="object-fit:contain;"></div>
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href="@Url.Action("Index", "Home")" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="@Url.Action("About", "Home")" class="header__navbar-item-link" style="font-size:20px" ;>Giới thiệu</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="@Url.Action("ProductList", "Home")" class="header__navbar-item-link" style="font-size:20px;">Sản phẩm</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="@Url.Action("Register", "Account")" class="header__navbar-item-link" style="font-size:20px;">Đăng kí</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="@Url.Action("Login", "Account")" class="header__navbar-item-link" style="font-size:20px;">Đăng nhập</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__search">
+                    <input type="search" name="search" placeholder="Từ khóa tìm kiếm" style="background-color:white">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="header__cart" style="font-size:20px;color:white">
+                    &nbsp;
+                    Đặt hàng
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+        </header>
     </div>
+    @* top 1  *@
+    <div class="MainContent">
+        @RenderBody()
+        @*//body*@
+    </div>
+
+    @* footer *@
+    <footer class="footer">
+        <div class="grid" style="flex-wrap:nowrap;">
+
+            <div class="logo">
+                <img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png">
+                <div class="lienhe">
+                    <div style="color:#233F28;font-size:12px;">
+                        <h1>Dầu gội DANNGOC</h1>
+                    </div>
+
+                    <div class="thongtin">
+                        <p>
+                            <i class="fas fa-home"></i>
+                            &nbsp; 828 Sư Vạn Hạnh, Phường 13, Quận 10, TP. HCM
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt"></i>
+                            &nbsp; (028) 3863 2052 - (028) 3862 9232
+                        </p>
+                        <p>
+                            <i class="far fa-envelope"></i>
+                            &nbsp; contact@huflit.edu.vn
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @* Thông tin 2  *@
+            <div class="thongtin2">
+                <div style="color:#233F28;font-size:12px;">
+                    <h1> Về chúng tôi</h1>
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Giới thiệu</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Đối tác</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">FAQ</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Tin tức</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+            @* Thông tin 3  *@
+            <div class="thongtin3">
+                <div style="color:#233F28;font-size:12px;">
+                    <h1> Chính sách</h1>
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách giao hàng</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách thanh toán</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách đổi trả</a>
+                    </div>
+                    <br />
+                    <div>
+                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách bảo mật</a>
+                    </div>
+                </div>
+            </div>
+            @* Hộp thông tin *@
+            <div class="hopthongtin">
+                <div class="title">
+                    <h1> Nhận thông báo</h1>
+                </div>
+                <div style="color:#233F28;font-size:20px;">
+                    Đăng ký để nhận những thông tin dịch vụ mới nhất của chúng tôi
+                </div>
+                <br />
+                <input placeholder="Email" type="email" style="height: 48px; width: 100%; border-radius: 8px; background: #EEF3EA;padding: 8.5px 12px; " />
+                <br />
+
+                <div style="padding:15px;display:inline-block">
+                    <button class="nutbam" style="border:none;">
+                        GỬI NHẬN TIN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
-</html>
+

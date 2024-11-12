@@ -215,7 +215,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList1.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\sanphamcss\base.css" />
+    <Content Include="Content\sanphamcss\main - Copy - Copy %282%29.css" />
+    <Content Include="Content\sanphamcss\main.css" />
     <Content Include="Content\script\All-css.css" />
     <Content Include="Content\sliderimgsrc\95916a0bd08a84d64206ce6ef9e72010.png" />
     <Content Include="Content\sliderimgsrc\9c0a7990ddba5207da7cc37b85bdc2f0.png" />
@@ -306,6 +310,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\VerifyState.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Home\ParitalViewSkinCareProduct.cshtml" />
+    <Content Include="Views\Home\ParitalViewHairWashProduct.cshtml" />
+    <Content Include="Views\Home\ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

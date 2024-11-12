@@ -1,0 +1,156 @@
+﻿@model _23DH112330_MyStore.Models.ViewModel.HomeProductVM
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+<style>
+
+    form {
+        margin-block-end: 0em;
+        width: 50%;
+    }
+    html {
+        font-family: 'Roboto', sans-serif;
+        background-color: #F1F0EC;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="~/Content/sanphamcss/main - Copy - Copy (2).css" rel="stylesheet" />
+    <link href="~/Content/sanphamcss/base.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body style="height:1260px;">
+    <div class="app">
+        <div class="bottom__header">
+            <div class="bottom__header-div">
+                <ul class="bottom__header-list">
+                    <li class="bottom__header-item">
+                        <a href="" class="bottom__header-item-home-link">Trang chủ > &nbsp;</a>
+                    </li>
+                    <li class="bottom__header-item-">
+                        <a href="#" class="bottom__header-item-listproduct-link">Danh sách sản phẩm</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2">
+                        <nav class="category">
+                            <h3 class="category__heading">Danh mục</h3>
+                            <hr>
+                            <ul class="category__list">
+                                <li class="category-item">
+                                    @Html.ActionLink("Dầu gội", "ProductList", "Home",
+                                    new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        sortOrder = "daugoi"
+                                    }, new
+                                    {
+                                        @class = "category-item__link"
+                                    })
+                                </li>
+                                <li class="category-item">
+                                    @Html.ActionLink("Chăm sóc da", "ProductList", "Home",
+                                    new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        sortOrder = "chamsocda"
+                                    }, new
+                                    {
+                                        @class = "category-item__link"
+                                    })
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav class="category">
+                            <h3 class="category__heading">Giá sản phẩm</h3>
+                            <hr>
+                            <ul class="category__list">
+                                <li class="category-item">
+                                    <input type="radio" name="radio">Dưới 5 triệu
+                                </li>
+                                <li class="category-item">
+                                    <input type="radio" name="radio">Từ 5 triệu đến 8 triệu
+                                </li>
+                                <li class="category-item">
+                                    <input type="radio" name="radio">Trên 8 triệu
+                                </li>
+                            </ul>
+
+                            @Html.ActionLink("Đặt lại", "ProductList", "Home", null, new
+                            {
+                               @class = "category__item-reset",
+                               @style ="margin-left:-10px"
+                            })
+                        </nav>
+                    </div>
+                    <div class="grid__column-10">
+                        <div class="category-display">
+                            <div class="category-display__show">
+                                @using (Html.BeginForm("ProductList", "Home", FormMethod.Get))
+                                {
+                                    @Html.TextBoxFor(m => m.SearchTerm, new
+                               {
+                                   @style = "background-color:white; border:none; width:83%; height:100%",
+                                   placeholder = "Từ khóa tìm kiếm"
+                               })
+
+                                    <button type="submit" style = "background-color:white; border:none"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                }
+                            </div>
+
+                                <div class="category-display__sort">
+                                    <div class="category-display__select">
+                                        <div class="category-display__icon"><i class="fa-solid fa-chevron-down"></i>Sắp xếp</div>
+                                        <ul class="category__search-option">
+                                            <li class="category__search-item category__search-item--active">
+                                                @Html.ActionLink("Theo tên", "ProductList", "Home")
+                                            </li>
+                                            <li class="category__search-item">
+                                                @Html.ActionLink("Giá tăng dần", "ProductList", "Home",
+                                                new
+                                                {
+                                                    searchTerm = Model.SearchTerm,
+                                                    sortOrder = "giaasc"
+                                                }, new
+                                                {
+                                                    @class = "category-item__link"
+                                                })
+                                            </li>
+                                            <li class="category__search-item">
+                                                @Html.ActionLink("Giá giảm dần", "ProductList", "Home",
+                                                new
+                                                {
+                                                    searchTerm = Model.SearchTerm,
+                                                    sortOrder = "giadesc"
+                                                }, new
+                                                {
+                                                    searchTerm = Model.SearchTerm,
+                                                    @class = "category-item__link"
+                                                })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="home-product">
+
+                            <div style="align-items:center;justify-content:center;">
+                                @Html.Partial("PartialViewNewProduct", Model)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

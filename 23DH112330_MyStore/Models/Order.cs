@@ -25,7 +25,6 @@ namespace _23DH112330_MyStore.Models
         public System.DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
         public string PaymentStatus { get; set; }
-        public string AddressDelivery { get; set; }
         public string ShippingAddress { get; set; }
         public string DeliveryMethod { get; set; }
         public string PaymentMethod { get; set; }

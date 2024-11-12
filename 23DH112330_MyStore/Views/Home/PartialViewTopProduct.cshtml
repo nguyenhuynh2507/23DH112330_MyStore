@@ -3,10 +3,11 @@
     ViewBag.Title = "Customer Home Page";
     <link rel="stylesheet" type="text/css" href="~/Content/script/All-css.css" />
 }
+
 @if (Model.TopProducts != null && Model.TopProducts.Any())
 {
     <div class="grid__row">
-        @foreach (var product in Model.TopProducts)
+        @foreach (var product in Model.RelatedProducts)
         {
 
             <div class="grid_column-2_5">
@@ -30,4 +31,4 @@
             </div>
         }
     </div>
-}
+            }
