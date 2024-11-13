@@ -23,7 +23,7 @@
     <link href="~/Content/sanphamcss/base.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body style="height:1260px;">
+<body style="height: 1260px; font-family: 'Roboto', sans-serif;">
     <div class="app">
         <div class="bottom__header">
             <div class="bottom__header-div">
@@ -74,13 +74,40 @@
                             <hr>
                             <ul class="category__list">
                                 <li class="category-item">
-                                    <input type="radio" name="radio">Dưới 5 triệu
+                                    @Html.ActionLink("Dưới 5 triệu", "ProductList", "Home",
+                                    new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        sortOrder = "duoi5tr"
+                                    }, new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        @class = "category-item__link"
+                                    })
                                 </li>
                                 <li class="category-item">
-                                    <input type="radio" name="radio">Từ 5 triệu đến 8 triệu
+                                    @Html.ActionLink("Từ 5 triệu đến 8 triệu", "ProductList", "Home",
+                                    new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        sortOrder = "tu5->8"
+                                    }, new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        @class = "category-item__link"
+                                    })
                                 </li>
                                 <li class="category-item">
-                                    <input type="radio" name="radio">Trên 8 triệu
+                                    @Html.ActionLink("Trên 8 triệu", "ProductList", "Home",
+                                    new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        sortOrder = "tren8"
+                                    }, new
+                                    {
+                                        searchTerm = Model.SearchTerm,
+                                        @class = "category-item__link"
+                                    })
                                 </li>
                             </ul>
 

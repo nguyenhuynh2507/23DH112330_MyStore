@@ -59,140 +59,40 @@
     </title>
 </head>
 <body>
-    <div class="header-ads" style=" background-color: #EFFFF4; height:40px;padding-top:20px;">
-        <a href="" style="text-decoration: none;">
-            <div style="color: #00AB56; display: flex; justify-content: center; font-size: 12px; font-weight: 600; line-height: 150%; padding-left: 4px; gap:4px;">
-                Freeship đơn từ 45k, giảm nhiều hơn cùng
-                <img style="width:79px; height:16px;" src="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png" />
-            </div>
-        </a>
-    </div>
-    <header class="header">
-        <div class="grid">
-            <nav class="header__navbar">
-                <ul class="header__navbar-list">
-                    <li class="header__navbar-item">
-                        <a href="@Url.Action("Index", "Home")"><img src="https://salt.tikicdn.com/ts/upload/0e/07/78/ee828743c9afa9792cf20d75995e134e.png" width="96" height="40"></a>
-                        <br />
-                        <a href="@Url.Action("Index", "Home")" class="header__navbar-link header__navbar-link--totnhanh">Tốt &amp; nhanh</a>
-                    </li>
-                </ul>
-                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                {
-                    <div class="header__search">
-                        <i class="search-icon fas fa-search"></i>
-                        @Html.TextBoxFor(m => m.SearchTerm, new
-                   {
-                       @class = "header__search-input",
-                       placeholder = "30 ngày đổi trả"
-                   })
-                        <div class="search-submit">
-                            <button class="search-submit--btn">Tìm kiếm</button>
-                        </div>
-                    </div>
-                }
-                <ul class="header__navbar-list">
-                    <li class="header__navbar-item">
-                        <a href="@Url.Action("Register", "Account")" class="header__navbar-link"><i class="header__navbar-icon fas fa-home"></i>Đăng Kí</a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="@Url.Action("Login", "Account")" class="header__navbar-link header__navbar-link--separate"><i class="header__navbar-icon far fa-smile">Đăng Nhập</i></a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="@Url.Action("Index", "Cart")" class="header__navbar-link  header__navbar-link--shop"><i class="header__navbar-icon fas fa-shopping-cart"></i></a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="quicksearch-address">
-                <div class="searchoption">
-                    <a href="" class="header__navbar-link header__navbar-linkqs">điện gia dụng</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">xe cộ</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">mẹ &amp; bé</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">khỏe đẹp</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">nhà cửa</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">sách</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">thể thao</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">điện thoại</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">ipad gen 10</a>
-                    <a href="" class="header__navbar-link header__navbar-linkqs">samsung</a>
-                </div>
-                <div class="shipping-address ">
-                    <a href="" class="header__navbar-link header__navbar-link--addr"><i class="header__navbar-icon fas fa-map-marker-alt"></i>Giao đến:</a>
-                    <a href="~/ShipipingAddress/ShippingAddress" class="address-display">
-                        Q. 1, P. Bến Nghé, Hồ Chí Minh
-                    </a>
-                </div>
-            </div>
-            <div>
-                <a href="" class="header-policy" style="text-decoration:none;">
-                    <div class="header__navbar-link header__navbar-link--totnhanh" style="padding-top:1px;">
-                        Cam kết
-                    </div>
-                    <div>
-                        <div class="address-display address-display--policy" style="border-left:none;">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/96/76/a3/16324a16c76ee4f507d5777608dab831.png" />
-                            <span style="padding-top:4px;">100% hàng thật</span>
-                        </div>
-                        <div class="address-display address-display--policy">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/0b/f2/19/c03ae8f46956eca66845fb9aaadeca1e.png" />
-                            <span style="padding-top:4px;">Hoàn 200% nếu hàng giả</span>
-                        </div>
-                        <div class="address-display address-display--policy">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/3a/f4/7d/86ca29927e9b360dcec43dccb85d2061.png" />
-                            <span style="padding-top:4px;">30 ngày đổi trả</span>
-                        </div>
-                        <div class="address-display address-display--policy">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/87/98/77/fc33e3d472fc4ce4bae8c835784b707a.png" />
-                            <span style="padding-top:4px;">Giao nhanh 2h</span>
-                        </div>
-                        <div class="address-display address-display--policy">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/6a/81/06/0675ef5512c275a594d5ec1d58c37861.png" />
-                            <span style="padding-top:4px;">Giá siêu rẻ</span>
-                        </div>
-                        <div class="address-display address-display--policy">
-                            <img style="width:20px; height:20px;" src="https://salt.tikicdn.com/ts/upload/11/09/ec/456a2a8c308c2de089a34bbfef1c757b.png" />
-                            <span style="padding-top:4px;">Free ship mọi nơi</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </header>
 
-    <div class="grid">
-        <div class="grid__row">
-
-            <div class="product-preview" style="margin:auto;width:90%">
-                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    <div class="grid" style=" justify-content: center;">
+        <div class="grid__row" style="width:70%">
+            <div class="product-preview" style=" font-size: large; display: flex; justify-content: center; margin: auto; width: 90%;">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @style = "width:100%" }))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <h2 class="col-md-6" style="text-align:center">Đăng nhập</h2>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-dange" })
+                    <div>
+                        <h2>Đăng nhập</h2>
                     </div>
-                    <div class="form-group">
+                    <div>
                         @Html.LabelFor(m => m.Username, new { @class = "control-label col-md-2" })
                         <div class="col-md-4">
                             @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Username)
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div>
                         @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
                         <div class="col-md-4">
                             @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
                             @Html.ValidationMessageFor(m => m.Password)
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-4">
-                            <input type="submit" value="Đăng nhập" class="btn btn-info accountbtn" /><br />
-                            <p>chưa có tài khoản? <a href="@Url.Action("Register", "Account", null)">Đăng kí ngay</a></p>
-                        </div>
+                    <div>
+                        <input type="submit" value="Đăng nhập" class="btn btn-info accountbtn" /><br />
+                        <p>chưa có tài khoản? <a href="@Url.Action("Register", "Account", null)">Đăng kí ngay</a></p>
                     </div>
+
                 }
             </div>
         </div>
-        </div>
+    </div>
 </body>
 </html>

@@ -215,6 +215,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\chitietscss\base.css" />
+    <Content Include="Content\chitietscss\main - Copy.css" />
     <Content Include="Content\PagedList1.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sanphamcss\base.css" />

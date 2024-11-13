@@ -255,7 +255,7 @@
             <div class="grid">
 
                 <div class="header-logo-img"><img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png" style="object-fit:contain;"></div>
-                <nav class="header__navbar">
+                <nav class="header__navbar" style="margin:auto;">
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item">
                             <a href="@Url.Action("Index", "Home")" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
@@ -274,15 +274,11 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="header__search">
-                    <input type="search" name="search" placeholder="Từ khóa tìm kiếm" style="background-color:white">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div class="header__cart" style="font-size:20px;color:white">
+                <a href="@Url.Action("Index", "Cart")" class="header__cart" style="text-decoration:none;font-size:20px;color:white">
                     &nbsp;
                     Đặt hàng
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
+                    <i class="fa-solid fa-cart-shopping" style="margin-top:7px"></i>
+                </a>
             </div>
         </header>
     </div>

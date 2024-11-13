@@ -1,0 +1,35 @@
+:root{
+    --white-color: #fff;
+    --black-color:#000;
+    --text-color:#333;
+}
+
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', 'sans-serif';
+    box-sizing: border-box;
+}
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin:0 auto;
+}
+.grid__full-width{
+    width:100%;
+}
+.grid__row{
+    width:100%;
+    display: flex;
+}
+/*cột cách sản phẩm*/
+.grid__column-6{
+    width:60%;
+    margin-right: 12px;
+}
+.grid__column-4{
+    width:40%;
+    margin-left: 12px;
+    margin-top: 20px;
+}

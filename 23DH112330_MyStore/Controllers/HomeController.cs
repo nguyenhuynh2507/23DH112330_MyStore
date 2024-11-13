@@ -68,9 +68,9 @@ namespace _23DH112330_MyStore.Controllers
                 case "chamsocda": model.NewProducts = product.Where((p => p.Category.CategoryID == 11)).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
                 case "giaasc": model.NewProducts = product.OrderBy(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
                 case "giadesc": model.NewProducts = product.OrderByDescending(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
-                case "duoi5tr": model.NewProducts = product.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
-                case "tu5->8": model.NewProducts = product.OrderBy(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
-                case "tren8": model.NewProducts = product.OrderByDescending(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
+                case "duoi5tr": model.NewProducts = product.Where(p => p.ProductPrice < 5000000).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+                case "tu5->8": model.NewProducts = product.Where(p => p.ProductPrice >= 5000000 && p.ProductPrice <= 8000000 ).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+                case "tren8": model.NewProducts = product.Where(p => p.ProductPrice > 8000000).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
                 default: model.NewProducts = product.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
             }
             model.SkinCare = product.Where(p => p.Category.CategoryID == 11).Take(4).ToList();
