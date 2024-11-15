@@ -15,6 +15,10 @@ namespace _23DH112330_MyStore.Controllers
     public class HomeController : Controller
     {
         private MyStoreEntities db = new MyStoreEntities();
+        public ActionResult About()
+        {
+            return View();
+        }
         public ActionResult Index(string searchTerm, int? page)
         {
             var model = new HomeProductVM();

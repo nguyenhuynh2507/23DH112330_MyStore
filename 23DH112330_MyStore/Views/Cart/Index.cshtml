@@ -114,17 +114,30 @@
                                     </div>
                                 </div>
                                 <span class="grid_column-3">@item.UnitPrice.ToString("N0")<sup>₫</sup></span>
-                                <div class="grid_column-2">
+                                <div class="grid_column-2" style="display:flex; gap:5px;height:30px;">
+                                    <!-- Nút giảm số lượng -->
                                     @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post))
                                     {
                                         <input type="hidden" name="id" value="@item.ProductID" />
-                                        <button type="button" style="width:20px;" onclick="cartUpdateQuantity(@item.ProductID, @item.Quantity - 1)">-</button>
-                                        <input type="number" name="quantity" value="@item.Quantity" min="1" max="100" style="width:40px; text-align:right" readonly />
-                                        <button type="button" style="width:20px;" onclick="cartUpdateQuantity(@item.ProductID, @item.Quantity + 1)">+</button>
+                                        <input type="hidden" name="quantity" value="@(item.Quantity - 1)" />
+                                        <button type="submit" style="width:20px;" @(item.Quantity == 1 ? "disabled" : "")>-</button>
+                                    }
+
+                                    <!-- Hiển thị số lượng hiện tại -->
+                                    <input type="number" value="@item.Quantity" style="width:40px; text-align:center" readonly />
+
+                                    <!-- Nút tăng số lượng -->
+                                    @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="id" value="@item.ProductID" />
+                                        <input type="hidden" name="quantity" value="@(item.Quantity + 1)" />
+                                        <button type="submit" style="width:20px;">+</button>
                                     }
                                 </div>
                                 <span class="grid_column-2">@item.TotalPrice.ToString("N0")<sup>₫</sup></span>
-                                <a href="@Url.Action("RemoveFromCart", "Cart", null)"><img style="margin-right:10px;" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/trash.svg" class="remove-all" alt="deleted"></a>
+                                <a href="@Url.Action("RemoveItem", "Cart", new { id = item.ProductID })">
+                                    <img style="margin-right:10px;" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/trash.svg" class="remove-all" alt="deleted">
+                                </a>
                             </div>
                         }
                     </div>

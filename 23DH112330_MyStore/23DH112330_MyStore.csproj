@@ -217,6 +217,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\chitietscss\base.css" />
     <Content Include="Content\chitietscss\main - Copy.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\PagedList1.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sanphamcss\base.css" />
@@ -315,6 +316,7 @@
     <Content Include="Views\Home\ParitalViewSkinCareProduct.cshtml" />
     <Content Include="Views\Home\ParitalViewHairWashProduct.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

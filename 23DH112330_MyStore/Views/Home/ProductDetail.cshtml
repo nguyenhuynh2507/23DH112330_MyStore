@@ -67,14 +67,20 @@
                                 <h3 class="category__heading category__heading-detail" style="margin:0">Số lượng</h3>
                                 <p>
                                     @Html.TextBoxFor(model => model.quantity, new
-                           {
-                               @class = "form-control",
-                                        @type = "number",
-                                        @min = 1
-                           })
+                               {
+                                   @class = "form-control",
+                                   @type = "number",
+                                   @min = 1,
+                                   @onchange = "this.form.submit();" // Tự động submit form khi thay đổi số lượng
+
+                               })
                                 </p>
                                 <h3 class="category__heading category__heading-detail" style="margin:0">Tạm tính</h3>
-                                <p>@Model.estimate.ToString("N0")<sup>đ</sup></p>
+                                <p>
+                                    <span id="temporary-total">
+                                        @Model.estimate.ToString("N0") <!-- Hiển thị giá tạm tính -->
+                                    </span><sup>₫</sup>
+                                </p>
                                 <div>
                                     @Html.ActionLink("Thêm vào giỏ", "AddToCart", "Cart", new
                                {
@@ -134,7 +140,6 @@
             </div>
         </div>
         </div>
-    </div>
 </body>
 </html>
 
