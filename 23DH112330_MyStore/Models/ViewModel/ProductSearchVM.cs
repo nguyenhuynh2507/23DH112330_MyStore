@@ -8,6 +8,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
 {
     public class ProductSearchVM
     {
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
 
         public decimal? MinPrice { get; set; }

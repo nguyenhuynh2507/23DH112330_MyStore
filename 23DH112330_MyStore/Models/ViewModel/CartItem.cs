@@ -7,6 +7,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
 {
     public class CartItem
     {
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }

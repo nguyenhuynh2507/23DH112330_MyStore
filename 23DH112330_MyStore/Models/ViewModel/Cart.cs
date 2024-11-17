@@ -8,6 +8,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
 {
     public class Cart
     {
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
         private List<CartItem> items = new List<CartItem>();
 

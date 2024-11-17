@@ -9,6 +9,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
     public class ProductDetailVM
     {
 
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
         public Product product { get; set; }
         public int quantity { get; set; } = 1;

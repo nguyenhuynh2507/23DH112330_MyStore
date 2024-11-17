@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -43,6 +44,8 @@ namespace _23DH112330_MyStore.Controllers
 
             model.NewProducts = product.OrderByDescending(p => p.OrderDetails.Count()).Take(20).ToPagedList(pageNumber, pageSize);
 
+            Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+            Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
             return View(model);
         }
 
@@ -86,6 +89,8 @@ namespace _23DH112330_MyStore.Controllers
 
             model.SortOrder = sortOrder;
 
+            Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+            Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
             return View(model);
         }
 
@@ -116,6 +121,8 @@ namespace _23DH112330_MyStore.Controllers
                 model.quantity = quantity.Value;
             }
 
+            Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+            Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
             return View(model);
         }
     }

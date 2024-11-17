@@ -7,6 +7,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
 {
     public class CartService
     {
+        public string Username { get; set; }
         public string SearchTerm { get; set; }
         private readonly HttpSessionStateBase session;
 

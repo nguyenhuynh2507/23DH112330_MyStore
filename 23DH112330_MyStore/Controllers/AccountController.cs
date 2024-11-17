@@ -2,6 +2,7 @@
 using _23DH112330_MyStore.Models.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
@@ -77,7 +78,8 @@ namespace _23DH112330_MyStore.Controllers
                     Session["UserRole"] = user.UserRole;
                     FormsAuthentication.SetAuthCookie(user.Username, false);
 
-
+                    Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+                    Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
                     return RedirectToAction("Index", "Home");
                 }
                 else
