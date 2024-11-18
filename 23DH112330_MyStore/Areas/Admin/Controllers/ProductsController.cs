@@ -23,7 +23,7 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
             var model = new ProductSearchVM();
             var products = db.Products.AsQueryable();
 
-            if(!string.IsNullOrEmpty(searchTerm))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
                 model.SearchTerm = searchTerm;
                 products = products.Where(p =>
@@ -41,19 +41,22 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
                 model.MaxPrice = maxPrice.Value;
                 products = products.Where(p => p.ProductPrice <= maxPrice.Value);
             }
-            switch (sortOrder)
-            {
-                case "name_asc": products = products.OrderBy(p => p.ProductName); break;
-                case "name_desc": products = products.OrderByDescending(p => p.ProductName); break;
-                case "price_asc": products = products.OrderBy(p => p.ProductPrice); break;
-                case "price_desc": products = products.OrderByDescending(p => p.ProductPrice); break;
-                default: products = products.OrderBy(p => p.ProductName); break;
-            }
-            model.SortOrder = sortOrder;
+
 
             int pageNumber = page ?? 1;
             int pageSize = 2;
-            model.Products = products.ToPagedList(pageNumber, pageSize);
+            model.Products = products.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize);
+
+            switch (sortOrder)
+            {
+                case "name_asc": model.Products = products.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+                case "name_desc": model.Products = products.OrderByDescending(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+                case "price_asc": model.Products = products.OrderBy(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
+                case "price_desc": model.Products = products.OrderByDescending(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
+                default: model.Products = products.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+            }
+            model.SortOrder = sortOrder;
+
             return View(model);
         }
 

@@ -1,6 +1,6 @@
 ﻿@model _23DH112330_MyStore.Models.ViewModel.RegisterVM
 @{
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = User.Identity.IsAuthenticated ? "~/Views/Shared/_CustomerLayoutLoggedIn.cshtml" : "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
 <style>

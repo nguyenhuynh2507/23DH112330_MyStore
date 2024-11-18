@@ -25,7 +25,7 @@ namespace _23DH112330_MyStore.Models.ViewModel
         public string PaymentMethod { get; set; }
 
         [Display(Name = "Phương thức vận chuyển")]
-        public string ShippingMethod { get; set; }
+        public string DeliveryMethod { get; set; }
 
         [Display(Name = "Địa chỉ vận chuyển")]
         public string ShippingAddress { get; set; }

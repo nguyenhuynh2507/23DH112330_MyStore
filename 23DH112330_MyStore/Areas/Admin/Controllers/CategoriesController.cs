@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _23DH112330_MyStore.Models;
+using _23DH112330_MyStore.Models.ViewModel;
 
 namespace _23DH112330_MyStore.Areas.Admin.Controllers
 {

@@ -45,7 +45,7 @@
             @Html.ActionLink("Tên tăng dần", "Index", "Products",
            new
            {
-               sortOder = "name_asc",
+               sortOrder = "name_asc",
                searchTerm = Model.SearchTerm,
                minPrice = Model.MinPrice,
                maxPrice = Model.MaxPrice
@@ -53,26 +53,26 @@
             @Html.ActionLink("Tên giảm dần", "Index", "Products",
 new
 {
-   sortOder = "name_desc",
-   searchTerm = Model.SearchTerm,
-   minPrice = Model.MinPrice,
-   maxPrice = Model.MaxPrice
+    sortOrder = "name_desc",
+    searchTerm = Model.SearchTerm,
+    minPrice = Model.MinPrice,
+    maxPrice = Model.MaxPrice
 }, null) |
             @Html.ActionLink("Giá tăng dần", "Index", "Products",
 new
 {
-   sortOder = "price_asc",
-   searchTerm = Model.SearchTerm,
-   minPrice = Model.MinPrice,
-   maxPrice = Model.MaxPrice
+    sortOrder = "price_asc",
+    searchTerm = Model.SearchTerm,
+    minPrice = Model.MinPrice,
+    maxPrice = Model.MaxPrice
 }, null) |
             @Html.ActionLink("Giá giảm dần", "Index", "Products",
 new
 {
-   sortOder = "price_desc",
-   searchTerm = Model.SearchTerm,
-   minPrice = Model.MinPrice,
-   maxPrice = Model.MaxPrice
+    sortOrder = "price_desc",
+    searchTerm = Model.SearchTerm,
+    minPrice = Model.MinPrice,
+    maxPrice = Model.MaxPrice
 }, null)
         </div>
     }

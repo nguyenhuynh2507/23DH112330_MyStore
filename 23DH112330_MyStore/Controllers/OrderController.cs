@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace _23DH112330_MyStore.Controllers
@@ -19,7 +20,7 @@ namespace _23DH112330_MyStore.Controllers
             return View();
         }
 
-
+        [Authorize]
         public ActionResult Checkout()
         {
             var cart = (Cart)Session["Cart"];
@@ -53,6 +54,7 @@ namespace _23DH112330_MyStore.Controllers
 
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(CheckoutVM model)
         {
@@ -88,6 +90,7 @@ namespace _23DH112330_MyStore.Controllers
                     TotalAmount = model.TotalAmount,
                     PaymentStatus = paymentStatus,
                     PaymentMethod = model.PaymentMethod,
+                    DeliveryMethod = model.DeliveryMethod,
                     ShippingAddress = model.ShippingAddress,
                     OrderDetails = cart.Items.Select(item => new OrderDetail
                     {
@@ -100,8 +103,73 @@ namespace _23DH112330_MyStore.Controllers
                 db.Orders.Add(order);
                 db.SaveChanges();
                 Session["Cart"] = null;
-                return RedirectToAction("OrderSuccess", new {id = order.OrderID});
+                return RedirectToAction("OrderSuccess", new { id = order.OrderID });
             }
+            return View(model);
+        }
+        public ActionResult OrderSuccess(int id)
+        {
+            var order = db.Orders.Include(o => o.OrderDetails.Select(od => od.Product)).SingleOrDefault(o => o.OrderID == id);
+
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            var orderViewModel = new OrderVM
+            {
+                OrderID = order.OrderID,
+                OrderDate = order.OrderDate,
+                TotalAmount = order.TotalAmount,
+                PaymentStatus = order.PaymentStatus,
+                ShippingAddress = order.ShippingAddress,
+                OrderDetails = order.OrderDetails.Select(od => new OrderDetailVM
+                {
+                    ProductID = od.ProductID,
+                    ProductName = od.Product.ProductName,
+                    Quantity = od.Quantity,
+                    UnitPrice = od.UnitPrice,
+                    TotalPrice = od.TotalPrice
+                }).ToList()
+            };
+
+            return View(orderViewModel);
+        }
+
+        [Authorize]
+        public ActionResult MyOrder()
+        {
+            var username = User.Identity.Name ?? Session["Username"]?.ToString();
+
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var customer = db.Customers.SingleOrDefault(c => c.Username == username);
+            if (customer == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var orders = db.Orders
+                .Where(o => o.CustomerID == customer.CustomerID)
+                .OrderByDescending(o => o.OrderDate)
+                .Select(o => new MyOrderVM
+                {
+                    OrderID = o.OrderID,
+                    OrderDate = o.OrderDate,
+                    TotalAmount = o.OrderDetails.Sum(d => d.Quantity * d.UnitPrice),
+                    PaymentStatus = o.PaymentStatus,
+                    ShippingAddress = o.ShippingAddress
+                })
+                .ToList();
+
+            var model = new MyOrderListVM
+            {
+                Orders = orders
+            };
+
             return View(model);
         }
     }

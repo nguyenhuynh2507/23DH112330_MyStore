@@ -1,6 +1,6 @@
 ﻿@model _23DH112330_MyStore.Models.ViewModel.Cart
 @{
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = User.Identity.IsAuthenticated ? "~/Views/Shared/_CustomerLayoutLoggedIn.cshtml" : "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
 <style>
@@ -85,7 +85,7 @@
 <body>
 
 
-    <div class="grid">
+    <div class="grid" style="width:100%">
         <div class="grid__row" style="display:flex; width:100%; font-size:16px">
             <div class="grid_column-7">
                 @if (!Model.Items.Any())
@@ -158,14 +158,16 @@
                     <div>
                         @Html.ActionLink("Thanh toán", "Checkout", "Order",null, new
                    {
-                       @class = "btn btn-danger cart-btn"
+                       @class = "btn btn-danger cart-btn",
+                       style = "margin-top:5px;font-size:100%;"
+
                    })
                     </div>
                     <div>
                         @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home",null ,new
                    {
                        @class = "btn btn-primary cart-btn",
-                       style ="margin-top:5px;"
+                       style ="margin-top:5px;font-size:100%;"
                    })
                     </div>
                 </div>

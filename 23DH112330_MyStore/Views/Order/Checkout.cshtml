@@ -1,6 +1,6 @@
 ﻿@model _23DH112330_MyStore.Models.ViewModel.CheckoutVM
 @{
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = User.Identity.IsAuthenticated ? "~/Views/Shared/_CustomerLayoutLoggedIn.cshtml" : "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
 <style>
@@ -67,89 +67,83 @@
     </script>
 </head>
 <body>
-    <div class="grid__row">
-        <div class="grid_column-7">
-            <div class="product-preview">
-                <h3 class="category__heading category__heading-detail">Chọn hình thức giao hàng</h3>
-                @using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { role = "form" }))
-                {
+    @using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { role = "form" }))
+    {
+        <div class="grid__row" style="display:flex; font-size:200%">
+            <div class="grid_column-7">
+                <div class="product-preview">
+                    <h3 class="category__heading category__heading-detail">Chọn hình thức giao hàng</h3>
                     @Html.AntiForgeryToken()
-                    foreach (var item in Model.CartItems)
+                    @foreach (var item in Model.CartItems)
                     {
                         <div class="grid" style="border:1px solid; border-radius:8px;padding:4px;">
-                            <img width="32" height="16" src="~/Content/sliderimgsrc/categoryicon/now.png" />
-                            <span class="idk-man">Giao siêu tốc 2h</span>
-                            <div style="display:flex; justify-content:space-between">
-                                <div style="display:flex">
+                            <div style="display: flex; justify-content: space-between; width: 100%">
+                                <div style="display:flex;width:70%">
                                     <img width="48" height="48" src="@item.ProductImage" />
                                     <div>
                                         @item.ProductName
                                         <p>SL: &nbsp; @item.Quantity</p>
                                     </div>
                                 </div>
-                                @item.TotalPrice
+                                <span style="width:30%">
+                                    @item.TotalPrice đ
+                                </span>
                             </div>
                         </div>
                     }
-                }
+                </div>
+
+                <div class="product-preview">
+                    <h3 class="category__heading category__heading-detail">Chọn hình thức thanh toán</h3>
+                    @Html.Label("Phương thức thanh toán", new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.RadioButtonFor(m => m.PaymentMethod, "Tiền mặt")Tiền mặt<br />
+
+                        @Html.RadioButtonFor(m => m.PaymentMethod, "Paypal") Paypal<br />
+
+                        @Html.RadioButtonFor(m => m.PaymentMethod, "Mua trước trả sau")Mua trước trả sau
+                    </div>
+                </div>
             </div>
 
-            <div class="product-preview">
-                <h3 class="category__heading category__heading-detail">Chọn hình thức thanh toán</h3>
-                    @Html.Label("Phương thức thanh toán", new {@class ="control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.RadioButtonFor(m => m.PaymentMethod, "Tiền mặt")Tiền mặt<br />
-
-                @Html.RadioButtonFor(m => m.PaymentMethod, "Paypal") Paypal<br />
-
-                @Html.RadioButtonFor(m => m.PaymentMethod, "Mua trước trả sau")Mua trước trả sau
-            </div>
+            <div class="grid_column-3">
+                <div class="product-preview">
+                    <h3 class="category__heading category__heading-detail">Giao tới</h3>
+                    <div>
+                        @Html.LabelFor(m => m.ShippingAddress, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.ShippingAddress, new { @class = " form-control", @readonly = "readonly", @id = "shippingAddress", @style = "font-size:100%" })
+                            @Html.ValidationMessageFor(m => m.ShippingAddress)
+                            <button style="font-size:100%" type="button" class="btn btn-link" onclick="enableAddressEdit()">Chỉnh sửa</button>
+                        </div>
+                    </div>
+                    <div>
+                        @Html.Label("Địa chỉ mới", new { @class = "control-label" })
+                        <div class="col-md-10">
+                            <input style="font-size:100%" type="text" id="newShippingAddress" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="product-preview">
+                    <h3 class="category__heading category__heading-detail">Phương thức giao hàng</h3>
+                    <div>
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(m => m.DeliveryMethod, "Giao hàng nhanh")Giao hàng nhanh<br />
+                            @Html.RadioButtonFor(m => m.DeliveryMethod, "Giao hàng tiết kiệm")Giao hàng tiết kiệm
+                            @Html.ValidationMessageFor(m => m.DeliveryMethod)
+                        </div>
+                    </div>
+                </div>
+                <div class="product-preview">
+                    <h3 style="margin-bottom:10px;" class="category__heading category__heading-detail">Đơn hàng</h3>
+                    <h3 class="category__headingl">
+                        @Html.DisplayFor(m => m.TotalAmount) &nbsp; đ
+                    </h3>
+                    <input type="submit" value="Đặt hàng" onclick="updateShippingAddress" class="btn btn-danger" style="width:100%; font-size:100%" />
+                </div>
             </div>
         </div>
-
-        <div class="grid_column-3">
-            <div class="product-preview">
-                <h3 class="category__heading category__heading-detail">Giao tới</h3>
-                <div>
-                    @Html.LabelFor(m => m.ShippingAddress, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.ShippingAddress, new { @class = " form-control", @readonly = "readonly", @id = "shippingAddress" })
-                        @Html.ValidationMessageFor(m => m.ShippingAddress)
-                        <button type="button" class="btn btn-link" onclick="enableAddressEdit()">Chỉnh sửa</button>
-                    </div>
-                </div>
-                <div>
-                    @Html.Label("Địa chỉ mới", new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <input type="text" id="newShippingAddress" class="form-control" />
-                    </div>
-                </div>
-            </div>
-            <div class="product-preview">
-                <h3 class="category__heading category__heading-detail">Phương thức giao hàng</h3>
-                <div>
-                    @Html.Label("Phương thức giao hàng", new { @class = "form-control col-md-2"})
-                    <div class="col-md-10">
-                        @Html.RadioButtonFor(m => m.ShippingMethod, "Giao hàng nhanh")Giao hàng nhanh<br />
-                        @Html.RadioButtonFor(m => m.ShippingMethod, "Giao hàng tiết kiệm")Giao hàng tiết kiệm
-                        @Html.ValidationMessageFor(m => m.ShippingMethod)
-                    </div>
-                </div>
-            </div>
-            <div class="product-preview">
-                <h3 class="category__heading category__heading-detail">Đơn hàng</h3>
-                <span style="padding-left:5px; border-color:lightgray">
-                    @Html.LabelFor(m => m.TotalAmount, new {@class ="form-control col-md-2"})
-                </span>
-                <hr />
-                <h3 class="category__heading category__heading-detail">
-                    @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @readonly ="readonly" })
-                    @Html.ValidationMessageFor(m => m.TotalAmount)
-                </h3>
-                <input type="submit" value="Đặt hàng" onclick="updateShippingAddress" class="btn btn-danger" style="width:100%" />
-            </div>
-        </div>
-    </div>
+    }
 
 </body>
 </html>

@@ -1,0 +1,36 @@
+﻿@model _23DH112330_MyStore.Models.ViewModel.OrderVM
+@{
+    Layout = User.Identity.IsAuthenticated ? "~/Views/Shared/_CustomerLayoutLoggedIn.cshtml" : "~/Views/Shared/_CustomerLayout.cshtml";
+}
+<h2>Xác nhận Đơn Hàng</h2>
+<p>Cảm ơn bạn đã đặt hàng! Đây là thông tin đơn hàng của bạn:</p>
+
+<ul>
+    <li><strong>Mã Đơn Hàng:</strong> @Model.OrderID</li>
+    <li><strong>Ngày Đặt Hàng:</strong> @Model.OrderDate.ToString("dd/MM/yyyy")</li>
+    <li><strong>Tổng Giá Trị:</strong> @Model.TotalAmount.ToString("C")</li>
+    <li><strong>Địa Chỉ Giao Hàng:</strong> @Model.ShippingAddress</li>
+</ul>
+
+<h3>Chi Tiết Đơn Hàng</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+            <th>Thành Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.UnitPrice.ToString("C")</td>
+                <td>@item.TotalPrice.ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

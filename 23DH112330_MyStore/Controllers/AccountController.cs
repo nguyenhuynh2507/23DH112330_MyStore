@@ -70,17 +70,29 @@ namespace _23DH112330_MyStore.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == model.Username 
-                && u.Password == model.Password
-                && u.UserRole == "C");
+                && u.Password == model.Password);
                 if (user != null)
                 {
-                    Session["Username"] = user.Username;
-                    Session["UserRole"] = user.UserRole;
-                    FormsAuthentication.SetAuthCookie(user.Username, false);
+                    if (user.UserRole == "C") 
+                    {
+                        Session["Username"] = user.Username;
+                        Session["UserRole"] = user.UserRole;
+                        FormsAuthentication.SetAuthCookie(user.Username, false);
 
-                    Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
-                    Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
-                    return RedirectToAction("Index", "Home");
+                        Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+                        Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else if (user.UserRole == "A")
+                    {
+                        Session["Username"] = user.Username;
+                        Session["UserRole"] = user.UserRole;
+                        FormsAuthentication.SetAuthCookie(user.Username, false);
+
+                        Debug.WriteLine("User.Identity.IsAuthenticated: " + User.Identity.IsAuthenticated);
+                        Debug.WriteLine("User.Identity.Name: " + User.Identity.Name);
+                        return RedirectToAction("Index", "Admin/HomeAdmin");
+                    }
                 }
                 else
                 {
@@ -94,6 +106,7 @@ namespace _23DH112330_MyStore.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
         public ActionResult ProfileInfo()

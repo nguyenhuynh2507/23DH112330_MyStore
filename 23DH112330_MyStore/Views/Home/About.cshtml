@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = User.Identity.IsAuthenticated ? "~/Views/Shared/_CustomerLayoutLoggedIn.cshtml" : "~/Views/Shared/_CustomerLayout.cshtml";
 }
 <style>
     .MainContent{

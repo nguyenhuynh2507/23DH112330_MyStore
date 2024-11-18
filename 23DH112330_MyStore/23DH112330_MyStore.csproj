@@ -193,6 +193,10 @@
     <Compile Include="Models\ViewModel\CheckoutVM.cs" />
     <Compile Include="Models\ViewModel\HomeProductVM.cs" />
     <Compile Include="Models\ViewModel\LoginVM.cs" />
+    <Compile Include="Models\ViewModel\MyOrderListVM.cs" />
+    <Compile Include="Models\ViewModel\MyOrderVM.cs" />
+    <Compile Include="Models\ViewModel\OrderDetailVM.cs" />
+    <Compile Include="Models\ViewModel\OrderVM.cs" />
     <Compile Include="Models\ViewModel\ProductDetailVM.cs" />
     <Compile Include="Models\ViewModel\ProductSearchVM.cs" />
     <Compile Include="Models\ViewModel\RegisterVM.cs" />
@@ -317,6 +321,9 @@
     <Content Include="Views\Home\ParitalViewHairWashProduct.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\_CustomerLayoutLoggedIn.cshtml" />
+    <Content Include="Views\Order\OrderSuccess.cshtml" />
+    <Content Include="Views\Order\MyOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

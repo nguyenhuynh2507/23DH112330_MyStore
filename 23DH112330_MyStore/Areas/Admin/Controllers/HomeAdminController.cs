@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _23DH112330_MyStore.Models;
+using _23DH112330_MyStore.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
