@@ -8,6 +8,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace _23DH112330_MyStore.Controllers
 {
@@ -111,15 +112,106 @@ namespace _23DH112330_MyStore.Controllers
         }
         public ActionResult ProfileInfo()
         {
-            return View();
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var username = Session["Username"].ToString();
+            var customer = db.Customers.FirstOrDefault(c => c.Username == username);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(customer);
+        
         }
+        [HttpGet]
         public ActionResult UpdateProfile()
         {
-            return View();
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var username = Session["Username"].ToString();
+            var customer = db.Customers.FirstOrDefault(c => c.Username == username);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new UpdateProfileVM
+            {
+                CustomerName = customer.CustomerName,
+                CustomerEmail = customer.CustomerEmail,
+                CustomerPhone = customer.CustomerPhone,
+                CustomerAddress = customer.CustomerAddress
+            };
+
+            return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateProfile(UpdateProfileVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var username = Session["Username"].ToString();
+                var customer = db.Customers.FirstOrDefault(c => c.Username == username);
+
+                if (customer != null)
+                {
+                    customer.CustomerName = model.CustomerName;
+                    customer.CustomerEmail = model.CustomerEmail;
+                    customer.CustomerPhone = model.CustomerPhone;
+                    customer.CustomerAddress = model.CustomerAddress;
+                    db.SaveChanges();
+
+                    return RedirectToAction("ProfileInfo");
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
         public ActionResult ChangePassword()
         {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.Users.SingleOrDefault(u => u.Username == User.Identity.Name);
+                ModelState.Remove("OldPassword");
+                if (model.OldPassword.Trim() != user.Password.Trim())
+                {
+                    ModelState.AddModelError("OldPassword", "Mật khẩu cũ không đúng");
+                    Debug.WriteLine($"OldPassword Input: {model.OldPassword}");
+                    Debug.WriteLine($"Stored Password: {user.Password}");
+                }
+                else
+                {
+                    user.Password = model.NewPassword;
+                    db.SaveChanges();
+                    ViewBag.Message = "Đổi mật khẩu thành công!";
+                    Debug.WriteLine($"OldPassword Input: {model.OldPassword}");
+                    Debug.WriteLine($"Stored Password: {user.Password}");
+                    return RedirectToAction("ProfileInfo");
+                } 
+            }
+            return View(model);
         }
 
         public ActionResult VerifyState()

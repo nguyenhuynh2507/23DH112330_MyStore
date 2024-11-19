@@ -111,6 +111,11 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            var products = db.Products.Where(p => p.CategoryID == id).ToList();
+            foreach (var product in products)
+            {
+                db.Products.Remove(product);
+            }
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");

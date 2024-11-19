@@ -36,11 +36,11 @@ namespace _23DH112330_MyStore.Controllers
             int pageNumber = page ?? 1;
             int pageSize = 6;
 
-            model.SkinCare = product.Where(p => p.Category.CategoryID == 11).Take(4).ToList();
+            model.SkinCare = product.Where(p => p.Category.CategoryName == "Chăm Sóc Da").Take(4).ToList();
 
-            model.HairWash = product.Where(p => p.Category.CategoryID == 13).Take(4).ToList();
+            model.HairWash = product.Where(p => p.Category.CategoryName == "Dầu Gội").Take(4).ToList();
 
-            model.FeaturedProducts = product.OrderByDescending(p => p.OrderDetails.Count()).Take(10).ToList();
+            model.FeaturedProducts = product.OrderByDescending(p => p.Sold).Take(10).ToList();
 
             model.NewProducts = product.OrderByDescending(p => p.OrderDetails.Count()).Take(20).ToPagedList(pageNumber, pageSize);
 
@@ -71,8 +71,8 @@ namespace _23DH112330_MyStore.Controllers
 
             switch (sortOrder)
             {
-                case "daugoi": model.NewProducts = product.Where((p => p.Category.CategoryID == 13)).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize);  break;
-                case "chamsocda": model.NewProducts = product.Where((p => p.Category.CategoryID == 11)).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
+                case "daugoi": model.NewProducts = product.Where((p => p.Category.CategoryName == "Dầu Gội")).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize);  break;
+                case "chamsocda": model.NewProducts = product.Where((p => p.Category.CategoryName == "Chăm Sóc Da")).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
                 case "giaasc": model.NewProducts = product.OrderBy(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
                 case "giadesc": model.NewProducts = product.OrderByDescending(p => p.ProductPrice).ToPagedList(pageNumber, pageSize); break;
                 case "duoi5tr": model.NewProducts = product.Where(p => p.ProductPrice < 5000000).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
@@ -80,11 +80,11 @@ namespace _23DH112330_MyStore.Controllers
                 case "tren8": model.NewProducts = product.Where(p => p.ProductPrice > 8000000).OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
                 default: model.NewProducts = product.OrderBy(p => p.ProductName).ToPagedList(pageNumber, pageSize); break;
             }
-            model.SkinCare = product.Where(p => p.Category.CategoryID == 11).Take(4).ToList();
+            model.SkinCare = product.Where(p => p.Category.CategoryName == "Chăm Sóc Da").Take(4).ToList();
 
-            model.HairWash = product.Where(p => p.Category.CategoryID == 13).Take(4).ToList();
+            model.HairWash = product.Where(p => p.Category.CategoryName == "Dầu Gội").Take(4).ToList();
 
-            model.FeaturedProducts = product.OrderByDescending(p => p.OrderDetails.Count()).Take(10).ToList();
+            model.FeaturedProducts = product.OrderByDescending(p => p.Sold).Take(10).ToList();
 
 
             model.SortOrder = sortOrder;
