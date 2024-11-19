@@ -58,7 +58,9 @@
                             <span class="detail__product-general-price-current">@Html.DisplayFor(model => model.product.ProductPrice)<sup>₫</sup></span>
                         </div>
                         <div class="detail__product-general-list" style="margin-bottom:0">
-                            <h3>Danh mục: &nbsp;@Html.DisplayFor(model => model.product.Category.CategoryName)</h3>
+                            <h3>Danh mục:&nbsp;@Html.DisplayFor(model => model.product.Category.CategoryName)</h3>
+                            <h3>Kho:&nbsp;@Html.DisplayFor(model => model.product.Stock)</h3>
+                            <h3>Đã bán:&nbsp;@Html.DisplayFor(model => model.product.Sold)</h3>
                         </div>
                         <div class="detail__product-general-quantity" style="border:none;">
                             @using (Html.BeginForm("ProductDetail", "Home", FormMethod.Get))

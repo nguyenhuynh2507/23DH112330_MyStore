@@ -100,6 +100,21 @@ namespace _23DH112330_MyStore.Controllers
                         TotalPrice = item.TotalPrice
                     }).ToList()
                 };
+                foreach (var item in cart.Items)
+                {
+                    var product = db.Products.SingleOrDefault(p => p.ProductID == item.ProductID);
+                    if (product != null)
+                    {
+                        product.Stock -= item.Quantity;
+                        product.Sold += item.Quantity;
+
+                        if (product.Stock < 0)
+                        {
+                            ModelState.AddModelError("", $"Sản phẩm {product.ProductName} không đủ hàng trong kho.");
+                            return View(model); // Trả về view với lỗi
+                        }
+                    }
+                }
                 db.Orders.Add(order);
                 db.SaveChanges();
                 Session["Cart"] = null;

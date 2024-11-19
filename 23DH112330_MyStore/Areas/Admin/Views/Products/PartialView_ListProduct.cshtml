@@ -17,6 +17,8 @@
         <th class="bg-success col-md-2">Hình ảnh</th>
         <th class="bg-success col-md-3">Tên sản phẩm</th>
         <th class="bg-success col-md-1">Đơn giá</th>
+        <th class="bg-success col-md-1">Số lượng</th>
+        <th class="bg-success col-md-1">Đã bán</th>
         <th class="bg-success col-md-2">Danh mục</th>
         <th class="bg-success col-md-4"></th>
     </tr>
@@ -32,6 +34,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => product.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Sold)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => product.Category.CategoryName)

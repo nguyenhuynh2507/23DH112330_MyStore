@@ -87,7 +87,7 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductImage,ProductDescription")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductImage,ProductDescription,Stock")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductImage,ProductDescription")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductImage,ProductDescription,Stock")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -167,5 +167,6 @@ namespace _23DH112330_MyStore.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

@@ -24,6 +24,7 @@
                         <h4 class="home-product-item__title">@Html.DisplayFor(modelItem => product.ProductName)</h4>
                         <div class="home-product-item__price">
                             <span class="home-product-item__price-current">@Html.DisplayFor(modelItem => product.ProductPrice)<sup>₫</sup></span>
+                            <span style="color: gray; font-size: 200%">Đã bán:&nbsp;@Html.DisplayFor(modelItem => product.Sold)</span>
                         </div>
                         <div class="home-product-item__addcart">
                             <span>Thêm giỏ hàng</span>
